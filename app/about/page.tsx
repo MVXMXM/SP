@@ -1,4 +1,4 @@
-import { bio, exhibitions, site, wixImage } from "../data";
+import { bio, exhibitions, site, photoUrl } from "../data";
 
 export default function AboutPage() {
   return (
@@ -16,7 +16,7 @@ export default function AboutPage() {
           ))}
         </div>
         <img
-          src={wixImage(site.aboutThumb, 900)}
+          src={photoUrl(site.aboutThumb, 900)}
           alt="Sebastian Piras"
           loading="lazy"
           className="h-auto w-full object-cover"

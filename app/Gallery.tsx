@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { type Photo, wixImage } from "./data";
+import { type Photo, photoUrl } from "./data";
 
 export default function Gallery({ photos }: { photos: Photo[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -44,7 +44,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
             className="group mb-4 block w-full cursor-zoom-in break-inside-avoid text-left"
           >
             <img
-              src={wixImage(photo.uri, 900)}
+              src={photoUrl(photo.uri, 900)}
               alt={photo.title}
               width={photo.w}
               height={photo.h}
@@ -66,7 +66,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
           onClick={close}
         >
           <img
-            src={wixImage(photos[openIndex].uri, 2000)}
+            src={photoUrl(photos[openIndex].uri, 2000)}
             alt={photos[openIndex].title}
             className="max-h-[85vh] max-w-full object-contain"
             onClick={(e) => e.stopPropagation()}

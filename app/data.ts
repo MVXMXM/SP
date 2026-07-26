@@ -1,6 +1,7 @@
 // Content extracted from sebastianpiras.com (Wix) on 2026-07-13.
-// Images are hotlinked from static.wixstatic.com for now; download and
-// self-host before this becomes a real standalone site.
+// Images were downloaded from the original Wix CDN and self-hosted under
+// public/img on 2026-07-25. The `uri` fields below are the original Wix
+// media ids, reused as stable local filenames.
 
 export type Photo = {
   title: string;
@@ -17,19 +18,26 @@ export type Section = {
   photos: Photo[];
 };
 
-export function wixImage(uri: string, width = 1600): string {
-  return `https://static.wixstatic.com/media/${uri}/v1/fit/w_${width},h_${width},q_85/image.jpg`;
+// Flatten a Wix media id into the filesystem/URL-safe token used as the
+// local filename under public/img.
+function asset(uri: string): string {
+  return uri.replace(/[^a-z0-9]/gi, "_");
 }
 
-export function wixThumb(uri: string, w: number, h: number): string {
-  return `https://static.wixstatic.com/media/${uri}/v1/fill/w_${w},h_${h},al_c,q_85/image.jpg`;
+// Two pre-generated sizes: a light one for grids, a large one for the lightbox.
+export function photoUrl(uri: string, width = 900): string {
+  return `/img/${width > 900 ? "full" : "grid"}/${asset(uri)}.jpg`;
 }
 
-// Logos are transparent PNGs; request PNG output so transparency is preserved.
-// The JPEG output used by wixImage() flattens transparency onto black, which
-// turns black-on-transparent marks (Gucci, CBS, NBC) into solid dark boxes.
-export function wixLogo(uri: string, width = 400): string {
-  return `https://static.wixstatic.com/media/${uri}/v1/fit/w_${width},h_${width},q_90/image.png`;
+// Fixed 570x669 crop used by the home-page tiles.
+export function thumbUrl(uri: string): string {
+  return `/img/thumb/${asset(uri)}.jpg`;
+}
+
+// Logos are transparent PNGs so black-on-transparent marks (Gucci, CBS, NBC)
+// don't render as solid dark boxes.
+export function logoUrl(uri: string): string {
+  return `/img/logo/${asset(uri)}.png`;
 }
 
 export const sections: Section[] = [

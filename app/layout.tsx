@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import Link from "next/link";
 import { site } from "./data";
 import SebNav from "./SebNav";
 import "./globals.css";
@@ -20,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian Piras — Photography",
+  title: "Photography by Sebastian Piras",
   description:
     "Sebastian Piras is a New York based photographer and filmmaker. Portraits of artists, editorial photography, and film stills.",
 };
@@ -35,17 +34,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         <SebNav />
-        <header className="mx-auto max-w-6xl px-6 pt-28 pb-8">
-          <Link href="/" className="block">
-            <h1
-              className="text-4xl tracking-wide sm:text-5xl"
-              style={{ fontFamily: "var(--font-cormorant), serif" }}
-            >
-              {site.name}
-            </h1>
-          </Link>
-        </header>
-        <main className="mx-auto max-w-6xl px-6 pb-20">{children}</main>
+        <main className="mx-auto max-w-6xl px-6 pb-20 pt-28">{children}</main>
         <footer className="border-t border-neutral-200">
           <div className="mx-auto flex max-w-6xl items-center px-6 py-8 text-[11px] uppercase tracking-[0.2em] text-neutral-400">
             <span>{site.copyright}</span>

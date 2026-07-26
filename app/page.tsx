@@ -1,29 +1,16 @@
 import Link from "next/link";
-import { sections, site, thumbUrl } from "./data";
-
-const tiles = [
-  ...sections.map((s) => ({
-    href: `/${s.slug}`,
-    title: s.title,
-    thumb: s.thumb,
-  })),
-  {
-    href: "/about",
-    title: "About",
-    thumb: site.aboutThumb,
-  },
-];
+import { sections, thumbUrl } from "./data";
 
 export default function SebastianHome() {
   return (
     <div>
       <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
-        {tiles.map((tile) => (
-          <Link key={tile.href} href={tile.href} className="group block">
+        {sections.map((s) => (
+          <Link key={s.slug} href={`/${s.slug}`} className="group block">
             <div className="overflow-hidden">
               <img
-                src={thumbUrl(tile.thumb)}
-                alt={tile.title}
+                src={thumbUrl(s.thumb)}
+                alt={s.title}
                 loading="lazy"
                 className="aspect-[190/223] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
@@ -32,7 +19,7 @@ export default function SebastianHome() {
               className="mt-3 text-xl text-neutral-800 transition-colors group-hover:text-black"
               style={{ fontFamily: "var(--font-cormorant), serif" }}
             >
-              {tile.title}
+              {s.title}
             </h2>
           </Link>
         ))}

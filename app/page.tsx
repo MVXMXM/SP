@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { sections, site, wixThumb } from "./data";
+import { sections, site, thumbUrl } from "./data";
 
 const tiles = [
   ...sections.map((s) => ({
@@ -22,7 +22,7 @@ export default function SebastianHome() {
           <Link key={tile.href} href={tile.href} className="group block">
             <div className="overflow-hidden">
               <img
-                src={wixThumb(tile.thumb, 570, 669)}
+                src={thumbUrl(tile.thumb)}
                 alt={tile.title}
                 loading="lazy"
                 className="aspect-[190/223] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"

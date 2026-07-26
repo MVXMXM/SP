@@ -1,4 +1,4 @@
-import { clients, wixLogo } from "../data";
+import { clients, logoUrl } from "../data";
 
 export default function ClientsPage() {
   return (
@@ -16,7 +16,7 @@ export default function ClientsPage() {
             className="flex aspect-square items-center justify-center p-4"
           >
             <img
-              src={wixLogo(client.uri, 400)}
+              src={logoUrl(client.uri)}
               alt={client.title}
               title={client.title}
               loading="lazy"

@@ -1,14 +1,19 @@
+import type { Metadata } from "next";
 import { bio, exhibitions, site, photoUrl } from "../data";
+
+export const metadata: Metadata = {
+  title: "About Sebastian Piras",
+};
 
 export default function AboutPage() {
   return (
     <div>
-      <h2
-        className="mb-8 text-3xl"
+      <h1
+        className="mb-8 text-4xl tracking-wide sm:text-5xl"
         style={{ fontFamily: "var(--font-cormorant), serif" }}
       >
-        About
-      </h2>
+        About Sebastian Piras
+      </h1>
       <div className="grid gap-10 md:grid-cols-[2fr_1fr]">
         <div className="space-y-5 text-[15px] leading-relaxed text-neutral-700">
           {bio.map((paragraph, i) => (

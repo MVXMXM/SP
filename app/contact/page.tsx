@@ -1,14 +1,19 @@
+import type { Metadata } from "next";
 import { contact } from "../data";
+
+export const metadata: Metadata = {
+  title: "Contact Sebastian Piras",
+};
 
 export default function ContactPage() {
   return (
     <div className="max-w-2xl">
-      <h2
-        className="mb-8 text-3xl"
+      <h1
+        className="mb-8 text-4xl tracking-wide sm:text-5xl"
         style={{ fontFamily: "var(--font-cormorant), serif" }}
       >
-        Contact
-      </h2>
+        Contact Sebastian Piras
+      </h1>
       <p className="text-[15px] leading-relaxed text-neutral-700">
         {contact.intro}
         <a
